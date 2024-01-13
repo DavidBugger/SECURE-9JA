@@ -11,25 +11,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-q9%+-3j16a)ngv+5oc-d3$_0f466$@@oc#j&rh$w=c9n7s5cj4'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +29,26 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',  # new
+    'firebase_auth' 
 ]
+
+
+FIREBASE_CONFIG = {
+    "apiKey": "AIzaSyD32gRh_6JesR_NUpoaC_VxOBxgR4PVAcI",
+    "authDomain": "jummai-2e7b2.firebaseapp.com",
+    "projectId": "jummai-2e7b2",
+    "storageBucket": "jummai-2e7b2.appspot.com",
+    "messagingSenderId": "1019980106800",
+    "appId": "1:1019980106800:web:6224db051c3b9f26fdb1f5",
+    "measurementId": "G-5SZ0WWZ68Z",
+}
+
+AUTHENTICATION_BACKENDS = [
+    # ... other backends ...
+    'firebase_auth.authentication.FirebaseAuthenticationBackend',
+]
+
+FIREBASE_AUTHENTICATION_SECURED = False  # Set to True for HTTPS
 
 COMPRESS_ROOT = BASE_DIR / 'static'
 
